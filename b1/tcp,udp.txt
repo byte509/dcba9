@@ -1,0 +1,81 @@
+import java.io.*;
+import java.net.*;
+
+public class Server {
+    public static void main(String[] args) throws Exception {
+        ServerSocket ss = new ServerSocket(5000);
+        System.out.println("Server started...");
+
+        Socket s = ss.accept();
+
+        DataInputStream dis = new DataInputStream(s.getInputStream());
+        String msg = dis.readUTF();
+
+        System.out.println("Client says: " + msg);
+
+        ss.close();
+    }
+}
+
+
+import java.io.*;
+import java.net.*;
+
+public class Client {
+    public static void main(String[] args) throws Exception {
+        Socket s = new Socket("localhost", 5000);
+
+        DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+        dos.writeUTF("Hello Server");
+
+        dos.flush();
+        dos.close();
+        s.close();
+    }
+}
+
+
+how to run:
+javac Server.java
+javac Client.java
+
+java Server
+java Client
+
+
+
+UDP:
+import java.net.*;
+
+public class UDPServer {
+    public static void main(String[] args) throws Exception {
+        DatagramSocket ds = new DatagramSocket(5000);
+
+        byte[] b = new byte[1024];
+        DatagramPacket dp = new DatagramPacket(b, b.length);
+
+        ds.receive(dp);
+
+        String msg = new String(dp.getData());
+        System.out.println("Client says: " + msg);
+    }
+}
+
+
+
+import java.net.*;
+
+public class UDPClient {
+    public static void main(String[] args) throws Exception {
+        DatagramSocket ds = new DatagramSocket();
+
+        String msg = "Hello UDP";
+        byte[] b = msg.getBytes();
+
+        DatagramPacket dp = new DatagramPacket(
+            b, b.length, InetAddress.getByName("localhost"), 5000
+        );
+
+        ds.send(dp);
+    }
+}

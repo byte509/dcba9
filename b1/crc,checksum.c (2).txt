@@ -1,0 +1,113 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    int choice;
+
+    printf("===== ERROR DETECTION =====\n");
+    printf("1. Checksum\n");
+    printf("2. CRC\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice)
+    {
+        case 1:
+        {
+            int n, i, value, sum = 0;
+
+            printf("\nEnter number of values: ");
+            scanf("%d", &n);
+
+            printf("Enter %d values:\n", n);
+
+            for (i = 0; i < n; i++)
+            {
+                scanf("%d", &value);
+                sum += value;
+            }
+
+            printf("\nChecksum = %d\n", sum);
+            break;
+        }
+
+        case 2:
+        {
+            char data[100];
+            int i, crc = 0;
+
+            printf("\nEnter data (string): ");
+            scanf("%s", data);
+
+            for (i = 0; i < strlen(data); i++)
+            {
+                crc += data[i];   // Simple CRC logic (ASCII sum)
+            }
+
+            printf("\nCRC = %d\n", crc);
+            break;
+        }
+
+        default:
+            printf("\nInvalid choice!\n");
+    }
+
+    return 0;
+}
+
+
+===== ERROR DETECTION =====
+
+1. Checksum
+2. CRC
+   Enter your choice: 1
+
+Enter number of values: 3
+Enter 3 values:
+10 20 30
+
+Checksum = 60
+
+
+===== ERROR DETECTION =====
+
+1. Checksum
+2. CRC
+   Enter your choice: 2
+
+Enter data (string): ABC
+
+CRC = 198
+
+
+CRC and Checksum
+
+CRC (Cyclic Redundancy Check) and Checksum are error detection techniques used in data communication to detect errors during transmission.
+
+1. CRC (Cyclic Redundancy Check)
+
+* CRC is a method that uses binary division.
+* The sender divides the data by a generator polynomial using XOR operation.
+* The remainder obtained is called the CRC.
+* This CRC is appended to the data and sent.
+* At the receiver side, the same division is performed.
+* If the remainder is zero, the data is error-free; otherwise, an error is detected.
+* CRC is highly reliable and can detect burst errors.
+
+2. Checksum
+
+* Checksum is a method that uses binary addition.
+* The sender adds all data values and generates a sum.
+* The complement (usually 1’s complement) of the sum is taken as the checksum.
+* The checksum is sent along with the data.
+* At the receiver side, all values including checksum are added.
+* If the result is zero (or all 1s), the data is considered correct.
+* Checksum is simpler but less reliable than CRC.
+
+Difference:
+CRC uses division (XOR) and is more reliable.
+Checksum uses addition and is simpler but less accurate.
+
+Conclusion:
+CRC is preferred for high accuracy, while checksum is used for simplicity and speed.

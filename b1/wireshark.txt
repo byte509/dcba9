@@ -1,0 +1,57 @@
+Wireshark → tool to see what data (packets) is moving in a network
+
+TCP (Transmission Control Protocol)
+Hint: reliable, makes sure data reaches correctly (uses handshake)
+
+UDP (User Datagram Protocol)
+Hint: fast but no guarantee (used in streaming, games)
+
+ICMP (Internet Control Message Protocol)
+Hint: used by ping to check connectivity
+
+ARP (Address Resolution Protocol)
+Hint: finds MAC address from IP (who is this device?)
+
+HTTP (HyperText Transfer Protocol)
+Hint: used to open websites (not secure)
+
+HTTPS (HyperText Transfer Protocol Secure)
+Hint: secure version of HTTP (encrypted)
+
+IP (Internet Protocol)
+Hint: gives address to device (like home address)
+
+MAC (Media Access Control)
+Hint: physical address of device (unique)
+
+DNS (Domain Name System)
+Hint: converts google.com → IP address
+
+TCP Handshake:
+SYN → start
+SYN-ACK → reply
+ACK → connection ready
+
+Packet:
+Hint: small piece of data sent over network
+
+Port:
+Hint: entry point for services (like door number)
+
+Open Port:
+Hint: service is running
+
+Filtered:
+Hint: blocked by firewall
+
+TCP/IP Layers:
+Application → what user uses (HTTP)
+Transport → how data moves (TCP/UDP)
+Internet → addressing (IP)
+Network → physical connection (ARP)
+
+Password in HTTP:
+Hint: visible in plain text (not safe)
+
+Filter:
+Hint: helps see specific traffic (tcp, udp, arp, icmp)s

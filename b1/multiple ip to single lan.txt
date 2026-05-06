@@ -1,0 +1,7 @@
+ip addr
+
+sudo ip addr add 192.168.205.2/24 dev <your_interface>
+
+ip addr show <your_interface>
+
+ping 192.168.205.2

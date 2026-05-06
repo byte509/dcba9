@@ -1,0 +1,43 @@
+🖥️ Server (server.py)
+import socket
+
+server = socket.socket()
+server.bind(('localhost', 12345))
+server.listen(1)
+
+print("Waiting for connection...")
+
+conn, addr = server.accept()
+print("Connected to Client:", addr)
+
+data = conn.recv(1024).decode()
+print("Client says:", data)
+
+conn.send("Hello from server!".encode())
+
+conn.close()
+server.close()
+💻 Client (client.py)
+import socket
+
+client = socket.socket()
+client.connect(('localhost', 12345))
+
+client.send("Hello Server!".encode())
+
+data = client.recv(1024).decode()
+print("Server says:", data)
+
+client.close()
+▶️ How to Run (Ubuntu)
+1️⃣ Create files
+nano server.py
+nano client.py
+2️⃣ Run Server (Terminal 1)
+python3 server.py
+
+Output:
+
+Waiting for connection...
+3️⃣ Run Client (Terminal 2)
+python3 client.py

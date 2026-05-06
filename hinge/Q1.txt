@@ -1,0 +1,45 @@
+Use basic networking commands in Linux (ping, tracert, nslookup, netstat, ARP, RARP,
+ip, ifconfig, dig, route )
+
+
+1. `whoami`
+   Displays the currently logged-in username.
+
+2. `ifconfig`
+   Shows network interface details like IP address and MAC address.
+
+3. `ping 172.16.20.169`
+   Checks connectivity between your system and the target IP address.
+
+4. `history`
+   Displays the list of previously executed commands.
+
+5. `ping`
+   Sends packets to test whether a host is reachable on the network.
+
+6. `traceroot`
+   Used to trace the path taken by packets from source to destination.
+
+7. `dig google.com`
+   Retrieves DNS information of a domain name.
+
+8. `route`
+   Displays or manages the routing table of the system.
+
+9. `ip`
+   Used to view and manage IP addresses and network interfaces.
+
+10. `netstat`
+    Displays active network connections and listening ports.
+
+11. `arp`
+    Shows the ARP table containing IP and MAC address mappings.
+
+12. `traceroute www.google.com`
+    Displays all intermediate routers between your system and Google.
+
+13. `nslookup`
+    Used to query DNS and obtain domain/IP information.
+
+14. `nmap google.com`
+    Scans the target host for open ports and services.

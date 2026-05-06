@@ -1,0 +1,112 @@
+1.view current routing table:
+ifconfig
+netstat
+netstat -rn
+route
+route -n
+ip route show
+
+2.add routes:
+sudo ip route add 192.168.1.0/24 dev enp2s0
+ip route show
+route -n
+ip route list
+
+delete routes:
+sudo ip route del 192.168.1.0/24 dev enp2s0
+ip route show
+
+3.update default gateway:
+sudo ip route add 192.168.20.1 dev enp2s0
+route
+sudo ip route add 192.168.202.1 dev enp2s0
+route
+sudo route add default gw 192.168.202.1 enp2s0
+sudo su
+exit
+chmod
+route
+sudo route del default gw 192.168.202.1 enp2s0
+route
+
+
+
+
+
+
+
+
+1. ifconfig
+Definition: Displays and configures network interfaces.
+Syntax:
+ifconfig [interface]
+
+2. netstat
+Definition: Shows network connections, routing tables, and statistics.
+Syntax:
+netstat [options]
+
+3. netstat -rn
+Definition: Displays routing table in numeric form.
+Syntax:
+netstat -rn
+
+4. route
+Definition: Displays or modifies the IP routing table.
+Syntax:
+route
+
+5. route -n
+Definition: Shows routing table without resolving hostnames.
+Syntax:
+route -n
+
+6. ip route show
+Definition: Displays current routing table using ip command.
+Syntax:
+ip route show
+
+7. ip route add
+Definition: Adds a new route to the routing table.
+Syntax:
+sudo ip route add <network> dev <interface>
+
+8. ip route list
+Definition: Lists all routing entries.
+Syntax:
+ip route list
+
+9. ip route del
+Definition: Deletes a route from routing table.
+Syntax:
+sudo ip route del <network> dev <interface>
+
+10. route add default gw
+Definition: Sets a default gateway.
+Syntax:
+sudo route add default gw <gateway_ip> <interface>
+
+11. route del default gw
+Definition: Deletes the default gateway.
+Syntax:
+sudo route del default gw <gateway_ip> <interface>
+
+12. sudo
+Definition: Executes commands with superuser privileges.
+Syntax:
+sudo <command>
+
+13. sudo su
+Definition: Switches to root user.
+Syntax:
+sudo su
+
+14. exit
+Definition: Exits from current shell/session.
+Syntax:
+exit
+
+15. chmod
+Definition: Changes file permissions.
+Syntax:
+chmod <permissions> <file>

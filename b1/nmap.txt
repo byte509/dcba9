@@ -1,0 +1,24 @@
+NMAP CHEAT SHEET
+
+nmap 127.0.0.1
+→ basic scan (find open ports)
+
+nmap -sV 127.0.0.1
+→ detect services on ports
+
+nmap 192.168.1.0/24
+→ scan entire network
+
+OUTPUT:
+open      → service running
+closed    → no service
+filtered  → blocked (firewall)
+
+Example:
+80/tcp open http
+22/tcp open ssh
+
+VIVA:
+Nmap → network scanning tool
+Port → communication endpoint (0–65535)
+Open port → service running

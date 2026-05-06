@@ -1,0 +1,7 @@
+netstat-rn
+ip route
+sudo ip route add 192.168.2.0/24 via 192.168.1.1
+sudo ip route del 192.168.2.0/24
+sudo route del default
+sudo ip route add default via 192.168.1.254
+ip route

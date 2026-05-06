@@ -1,0 +1,47 @@
+Perform network discovery using discovery tools (eg. Nmap, mrtg)
+Identify open, closed ports and services on target machine.
+1. Open the Linux terminal.
+
+2. Run the following commands one by one.
+
+
+nmap google.com
+Theory: Used to scan the target machine and identify open ports.
+
+
+nmap -sV google.com
+Theory: Detects services and version information running on open ports.
+
+
+nmap -p 1-100 google.com
+Theory: Scans ports from 1 to 100 on the target machine.
+
+
+netstat -a
+Theory: Displays active connections and listening ports.
+
+
+ping google.com
+Theory: Checks connectivity between source and destination.
+
+
+traceroute google.com
+Theory: Shows the path packets travel to reach the target machine.
+
+
+ifconfig
+Theory: Displays IP address and network interface configuration details.
+
+
+MRTG
+
+First install MRTG:
+
+sudo apt install mrtg
+Theory: Installs MRTG network monitoring tool in Linux.
+
+
+Then run:
+
+mrtg
+Theory: MRTG is used for monitoring and graphing network traffic statistics.

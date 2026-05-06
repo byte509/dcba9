@@ -1,0 +1,19 @@
+def crc(d, v):
+    n = len(v)
+    a = list(d + '0' * (n - 1))
+    for i in range(len(d)):
+        if a[i] == '1':
+            for j in range(n):
+                a[i + j] = str(int(a[i + j] != v[j]))
+    return ''.join(a[-(n - 1):])
+
+data = input("Enter binary data: ")
+divisor = input("Enter divisor: ")
+
+remainder = crc(data, divisor)
+codeword = data + remainder
+
+print("\nOriginal Message  : ", data)
+print("CRC Remainder     : ", remainder)
+print("Codeword          : ", codeword)
+print("Message Sent      : ", codeword)

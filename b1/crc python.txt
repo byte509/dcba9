@@ -1,0 +1,123 @@
+crc python
+
+def xor(a, b):
+    result = ""
+    for i in range(1, len(b)):
+        if a[i] == b[i]:
+            result += "0"
+        else:
+            result += "1"
+    return result
+
+
+def crc(data, generator):
+    n = len(generator)
+    temp = data[0:n]
+    i = n
+
+    while i < len(data):
+        if temp[0] == "1":
+            temp = xor(temp, generator) + data[i]
+        else:
+            temp = xor(temp, "0" * n) + data[i]
+        i += 1
+
+    if temp[0] == "1":
+        temp = xor(temp, generator)
+    else:
+        temp = xor(temp, "0" * n)
+
+    return temp  # remainder
+
+
+# MAIN PROGRAM
+message = input("Enter Message (binary): ")
+generator = input("Enter Generator (binary): ")
+
+data = message + "0" * (len(generator) - 1)
+
+remainder = crc(data, generator)
+codeword = message + remainder
+
+print("Message:", message)
+print("Codeword:", codeword)
+
+check = crc(codeword, generator)
+
+if "1" in check:
+    print("Error Detected")
+else:
+    print("No Error")
+
+Enter Message (binary): 1101011011
+Enter Generator (binary): 10011
+
+Message: 1101011011
+Codeword: 11010110111110
+No Error
+
+c code
+#include <stdio.h>
+#include <string.h>
+
+void xorOperation(char *a, char *b, char *result) {
+    for(int i = 1; i < strlen(b); i++) {
+        result[i-1] = (a[i] == b[i]) ? '0' : '1';
+    }
+    result[strlen(b)-1] = '\0';
+}
+
+void crc(char *data, char *divisor) {
+    int n = strlen(divisor);
+    char temp[100], result[100];
+
+    strncpy(temp, data, n);
+    temp[n] = '\0';
+
+    for(int i = n; i <= strlen(data); i++) {
+
+        if(temp[0] == '1')
+            xorOperation(divisor, temp, result);
+        else {
+            char zeros[100];
+            for(int j = 0; j < n; j++) zeros[j] = '0';
+            zeros[n] = '\0';
+            xorOperation(zeros, temp, result);
+        }
+
+        if(i < strlen(data)) {
+            result[n-1] = data[i];
+            result[n] = '\0';
+            strncpy(temp, result, n);
+        }
+    }
+
+    printf("CRC Remainder: %s\n", result);
+}
+
+int main() {
+    char data[100], divisor[100], appended[100];
+
+    printf("Enter data: ");
+    scanf("%s", data);
+
+    printf("Enter divisor: ");
+    scanf("%s", divisor);
+
+    strcpy(appended, data);
+
+    for(int i = 0; i < strlen(divisor)-1; i++)
+        strcat(appended, "0");
+
+    printf("Data after appending zeros: %s\n", appended);
+
+    crc(appended, divisor);
+
+    return 0;
+}
+
+
+Enter data: 1101011011
+Enter divisor: 10011
+Data after appending zeros: 11010110110000
+CRC Remainder: 1110

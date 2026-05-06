@@ -1,0 +1,27 @@
+﻿ping -c 4 google.com — checks connectivity using ICMP echo requests
+
+
+traceroute google.com — shows path taken by packets using TTL values
+
+dig google.com — provides detailed DNS query information
+
+
+nslookup google.com — resolves domain name to IP address using DNS
+
+
+netstat -tuln — displays active connections and listening ports
+
+
+arp -a — shows IP to MAC address mapping
+
+
+rarp -a — resolves MAC address to IP address (obsolete, rarely used)
+
+
+ip addr show — displays IP address and interface details
+
+
+ifconfig — displays and configures network interfaces (deprecated)
+
+
+route -n — displays routing table with numeric addresses

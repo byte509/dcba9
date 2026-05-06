@@ -1,0 +1,33 @@
+1. Before IP aliasing:
+ip add show
+2. IP aliasing:
+sudo ip addr add 10.0.0.5/8 dev enp2s0
+sudo ip addr add 192.168.205.5/24 dev enp2s0
+ip add show
+3. Deleting ip addresses:
+sudo ip addr del 10.0.0.5/8 dev enp2s0
+sudo ip addr del 192.168.205.5/24 dev enp2s0
+4. After deletion:
+ip add show
+
+
+
+
+
+---------------------
+
+1-line definitions + syntax
+.ip addr show
+Definition: Displays IP address details of all network interfaces
+Syntax:
+ip addr show
+
+.ip addr add
+Definition: Adds a new IP address to a network interface
+Syntax:
+sudo ip addr add <IP>/<prefix> dev <interface>
+
+.ip addr del
+Definition: Deletes an IP address from a network interface
+Syntax:
+sudo ip addr del <IP>/<prefix> dev <interface>
