@@ -1,0 +1,21 @@
+LInux: 
+sudo apt update
+sudo apt install openbsd-inetd telnetd
+sudo systemctl start openbsd-inetd
+sudo systemctl enable openbsd-inetd
+
+sudo ufw allow 23/tcp
+
+window:
+control panel - programs - window feature - telnet enable
+
+open cmd as administrator
+ping (ip-server)
+telnet (ip-server) 23
+
+ERROR:
+if ping working telnet not working 
+
+sudo nano /etc/inetd.conf
+uncomment telnet line 
+sudo systemctl restart openbsd-inetd

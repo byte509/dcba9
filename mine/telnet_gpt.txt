@@ -1,0 +1,232 @@
+Got it—here’s a **clean, exact step-by-step you can follow in your practical**, starting from installation and ending with testing + file opening.
+
+---
+
+# 🧪 TELNET PRACTICAL (FULL STEPS)
+
+## 🟢 PART 1: On Linux (Server side)
+
+### 🔹 Step 1: Update system
+
+```bash
+sudo apt update
+```
+
+---
+
+### 🔹 Step 2: Install telnet packages
+
+```bash
+sudo apt install openbsd-inetd telnetd -y
+```
+
+---
+
+### 🔹 Step 3: Enable Telnet service in config
+
+```bash
+sudo nano /etc/inetd.conf
+```
+
+👉 Find this line:
+
+```
+#telnet stream tcp nowait telnetd /usr/sbin/tcpd /usr/sbin/in.telnetd
+```
+
+👉 Remove `#` (uncomment it):
+
+```
+telnet stream tcp nowait telnetd /usr/sbin/tcpd /usr/sbin/in.telnetd
+```
+
+👉 Save:
+
+* Press `Ctrl + X`
+* Press `Y`
+* Press `Enter`
+
+---
+
+### 🔹 Step 4: Start service
+
+```bash
+sudo systemctl start openbsd-inetd
+```
+
+---
+
+### 🔹 Step 5: Enable service (auto start)
+
+```bash
+sudo systemctl enable openbsd-inetd
+```
+
+---
+
+### 🔹 Step 6: Allow port 23 in firewall
+
+```bash
+sudo ufw allow 23/tcp
+sudo ufw reload
+```
+
+---
+
+### 🔹 Step 7: Check if Telnet is running
+
+```bash
+sudo netstat -tulnp | grep 23
+```
+
+👉 You should see port **23 LISTENING**
+
+---
+
+### 🔹 Step 8: Find your IP address
+
+```bash
+ip addr
+```
+
+👉 Note something like:
+
+```
+192.168.x.x
+```
+
+---
+
+### 🔹 Step 9: Test locally (VERY IMPORTANT)
+
+```bash
+telnet localhost 23
+```
+
+👉 If it connects → server setup is correct ✅
+
+---
+
+# 🟢 PART 2: On Windows (Client side)
+
+### 🔹 Step 10: Enable Telnet
+
+* Control Panel
+* Programs
+* Turn Windows features on/off
+* ✔ Telnet Client
+
+---
+
+### 🔹 Step 11: Open CMD as Administrator
+
+---
+
+### 🔹 Step 12: Ping server
+
+```bash
+ping <Linux-IP>
+```
+
+👉 If ping fails → network issue ❌
+👉 If ping works → continue ✅
+
+---
+
+### 🔹 Step 13: Connect using Telnet
+
+```bash
+telnet <Linux-IP> 23
+```
+
+👉 You should see login screen
+👉 Enter Linux username + password
+
+---
+
+# 🟢 PART 3: If Telnet NOT working
+
+Do this EXACTLY:
+
+### ✔ Recheck config
+
+```bash
+sudo nano /etc/inetd.conf
+```
+
+👉 Make sure telnet line is uncommented
+
+---
+
+### ✔ Restart service
+
+```bash
+sudo systemctl restart openbsd-inetd
+```
+
+---
+
+### ✔ Check firewall again
+
+```bash
+sudo ufw status
+```
+
+---
+
+### ✔ Test again locally
+
+```bash
+telnet localhost 23
+```
+
+---
+
+# 🟢 PART 4: Open TXT file from CMD (Practical requirement)
+
+### 🔹 Step 14: Create file (Linux)
+
+```bash
+nano file1.txt
+```
+
+---
+
+### 🔹 Step 15: Open file via Telnet (Windows side)
+
+After login:
+
+```bash
+nano file1.txt
+```
+
+---
+
+### 🔹 Step 16: Side-by-side (exam trick)
+
+On Windows CMD:
+
+```bash
+start notepad file1.txt
+start notepad file2.txt
+```
+
+👉 Then press:
+
+* `Windows + Left`
+* `Windows + Right`
+
+---
+
+# ⚡ FINAL CHECKLIST (what examiner expects)
+
+✔ Installed telnet
+✔ Configured inetd
+✔ Started service
+✔ Allowed port 23
+✔ Connected from Windows
+✔ Opened file
+
+---
+
+If you want, I can give you a **short “write in exam” version (5–6 steps only)** so you can finish fast 👍
